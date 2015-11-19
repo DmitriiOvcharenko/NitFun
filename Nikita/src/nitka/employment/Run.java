@@ -1,5 +1,7 @@
-package nitka.employment.sequence;
+package nitka.employment;
 
+import nitka.employment.sequence.DistribRepeat;
+import nitka.employment.sequence.SeqRepeat;
 import nitka.employment.tree.Tree;
 
 public class Run {
