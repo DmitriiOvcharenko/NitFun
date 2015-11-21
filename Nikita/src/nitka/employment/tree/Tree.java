@@ -12,6 +12,12 @@ public class Tree {
     public Tree() {
         treeHeight = null; // the hight is unknown
         root = new Branch(); // generate the tree
+        root.populate(1);
+    }
+    
+    public Tree(Branch root) {
+        treeHeight = null; // the hight is unknown
+        this.root = root;
     }
     
     public void print(){
@@ -41,5 +47,9 @@ public class Tree {
     protected void setHeightIfLess(Integer height){
         if(treeHeight<height)
             treeHeight = height;
+    }
+
+    public void setRoot(Branch root) {
+        this.root = root;
     }
 }

@@ -12,20 +12,24 @@ public class Branch {
     private Integer height;
     private Integer level;
     public Branch() {
-       this(1);        
-    }
+               
+    } 
     
-    public Branch (int level){
+    public void populate (int level){
         Random rand = new Random();
-        
         this.level = level;
         height = rand.nextInt(Tree.MAX_BRANCH_HEIGHT)+1; // height can not be less than 1
         children = new ArrayList<Branch>();
         int branchChildren = rand.nextInt(Tree.MAX_BRANCES);// number of branches can be less than 1
         if (level <= Tree.MAX_LEVEL)  // if tree is not full
-            for(int i=0;i<branchChildren;i++) // populate children
-                children.add(new Branch(level+1)); // at next level
+            for(int i=0;i<branchChildren;i++) // populate children{
+            {
+                Branch child = new Branch();
+                child.populate(level+1);
+                children.add(child); // at next level
+            }
     }
+
     
     public void print(){
         System.out.println(this);
@@ -43,7 +47,7 @@ public class Branch {
         setGroundHeightFromParent(parentHeight); // find height of branch form the ground
         int childHeight = 0;
         int maxHeight = 0;
-        if(children.isEmpty()) // if this is the last level, it's time to collect results
+        if(children == null || children.isEmpty()) // if this is the last level, it's time to collect results
             return getGroundHeight();
         else
             for(Branch child: children){  // if it has children, some recursion to drill deeper
@@ -76,5 +80,17 @@ public class Branch {
             child.draw();
         }
         
+    }
+
+    public void setChildren(List<Branch> children) {
+        this.children = children;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 }

@@ -59,4 +59,11 @@ public class SeqRepeat {
         System.out.println("Dest list is:   " + dest);
     }
 
+    public void setSource(List<Integer> source) {
+        this.source = source;
+    }
+
+    public List<Integer> getDest() {
+        return dest;
+    }
 }
